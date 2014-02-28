@@ -2,8 +2,9 @@
 
 DB_USER = "postgres"
 DB_NAME = "amagama"
-DB_PASSWORD = ""
-#DB_HOST = "localhost"
+DB_PASSWORD = "hfrawg826"
+DB_HOST = "localhost"
+#DB_HOST = "127.0.0.1"
 #DB_PORT = "5432"
 
 # Database pool config
