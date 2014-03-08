@@ -458,6 +458,7 @@ SELECT * from (SELECT s.text AS source, t.text AS target, TS_RANK(s.vector, quer
                 results.append(result)
         results.sort(key=lambda match: match['quality'], reverse=True)
         results = results[:max_candidates]
+        print('amagama/tmdb.py - returning these results: %s' % str(results))
         return results
 
 
