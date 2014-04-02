@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Copyright 2008-2014 Zuza Software Foundation
+# Copyright 2010-2014 Zuza Software Foundation
 #
 # This file is part of amaGama.
 #
@@ -18,16 +18,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
-import sys
+"""Public web query for the amaGama translation memory server"""
 
-# This part is only required when running from checkout instead of an install,
-# and only if PYTHONPATH was not exported before running.
-ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
-sys.path.insert(0, ROOT_DIR)  # Top level directory.
-
-# Keep this import after the path altering.
-import amagama.application
+from flask import Blueprint, render_template
 
 
-application = amagama.application.amagama_server_factory()
+web_ui = Blueprint('web_ui', __name__, static_folder='static')
+
+
+@web_ui.route('/<slang>/<tlang>/unit', methods=('GET', ))
+def translate(slang, tlang):
+    """Serve the query web page."""
+    return render_template("translate.html", slang=slang, tlang=tlang)
